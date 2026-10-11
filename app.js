@@ -1,4 +1,12 @@
 const timeElement = document.getElementById("current-time");
+const navButtons = document.querySelectorAll(".nav-btn");
+const screens = {
+  "watchface-screen": document.getElementById("watchface-screen"),
+  "messages-screen": document.getElementById("messages-screen"),
+  "chat-screen": document.getElementById("chat-screen"),
+  "activity-screen": document.getElementById("activity-screen"),
+  "settings-screen": document.getElementById("settings-screen")
+};
 
 function updateClock() {
   const now = new Date();
@@ -7,24 +15,28 @@ function updateClock() {
   timeElement.textContent = `${hours}:${minutes}`;
 }
 
-updateClock();
-setInterval(updateClock, 1000);
+function updateAnalogClock() {
+  const now = new Date();
+  const second = now.getSeconds();
+  const minute = now.getMinutes() + second / 60;
+  const hour = (now.getHours() % 12) + minute / 60;
 
-const navButtons = document.querySelectorAll(".nav-btn");
-const views = {
-  "messages-view": document.getElementById("messages-view"),
-  "chat-view": document.getElementById("chat-view"),
-  "activity-view": document.getElementById("activity-view"),
-  "settings-view": document.getElementById("settings-view")
-};
+  const secondHand = document.querySelector(".hand.second");
+  const minuteHand = document.querySelector(".hand.minute");
+  const hourHand = document.querySelector(".hand.hour");
 
-function showView(viewName) {
-  Object.keys(views).forEach((key) => {
-    views[key].classList.add("hidden");
+  secondHand.style.transform = `rotate(${second * 6}deg)`;
+  minuteHand.style.transform = `rotate(${minute * 6}deg)`;
+  hourHand.style.transform = `rotate(${hour * 30}deg)`;
+}
+
+function showScreen(screenName) {
+  Object.keys(screens).forEach((key) => {
+    screens[key].classList.remove("active");
   });
 
-  if (views[viewName]) {
-    views[viewName].classList.remove("hidden");
+  if (screens[screenName]) {
+    screens[screenName].classList.add("active");
   }
 }
 
@@ -32,32 +44,54 @@ navButtons.forEach((button) => {
   button.addEventListener("click", () => {
     navButtons.forEach((btn) => btn.classList.remove("active"));
     button.classList.add("active");
-
-    const target = button.dataset.view;
-    if (target) {
-      showView(target);
-    }
+    showScreen(button.dataset.screen);
   });
 });
 
 const messageItems = document.querySelectorAll(".message-item");
 const chatContact = document.getElementById("chat-contact");
-const backBtn = document.getElementById("back-btn");
+const backButton = document.getElementById("back-btn");
 
 messageItems.forEach((item) => {
   item.addEventListener("click", () => {
     messageItems.forEach((msg) => msg.classList.remove("active"));
     item.classList.add("active");
-
-    const name = item.dataset.contact;
-    chatContact.textContent = name;
-
-    showView("chat-view");
+    chatContact.textContent = item.dataset.contact;
+    showScreen("chat-screen");
+    navButtons.forEach((btn) => btn.classList.remove("active"));
   });
 });
 
-backBtn.addEventListener("click", () => {
-  showView("messages-view");
+backButton.addEventListener("click", () => {
+  showScreen("messages-screen");
   navButtons.forEach((btn) => btn.classList.remove("active"));
-  navButtons[0].classList.add("active");
+  const msgBtn = [...navButtons].find((btn) => btn.dataset.screen === "messages-screen");
+  if (msgBtn) msgBtn.classList.add("active");
 });
+
+const input = document.querySelector(".chat-input-area input");
+const sendButton = document.querySelector(".chat-input-area button");
+const chatMessages = document.querySelector(".chat-messages");
+
+sendButton.addEventListener("click", () => {
+  const text = input.value.trim();
+  if (!text) return;
+
+  const bubble = document.createElement("div");
+  bubble.className = "bubble sent";
+  bubble.textContent = text;
+  chatMessages.appendChild(bubble);
+  input.value = "";
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+});
+
+input.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    sendButton.click();
+  }
+});
+
+updateClock();
+updateAnalogClock();
+setInterval(updateClock, 1000);
+setInterval(updateAnalogClock, 1000);
