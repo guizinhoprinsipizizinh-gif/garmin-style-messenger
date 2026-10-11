@@ -2,9 +2,9 @@ const timeElement = document.getElementById("current-time");
 const navButtons = document.querySelectorAll(".nav-btn");
 const screens = {
   "watchface-screen": document.getElementById("watchface-screen"),
-  "messages-screen": document.getElementById("messages-screen"),
   "apps-screen": document.getElementById("apps-screen"),
   "notifications-screen": document.getElementById("notifications-screen"),
+  "messages-screen": document.getElementById("messages-screen"),
   "chat-screen": document.getElementById("chat-screen"),
   "activity-screen": document.getElementById("activity-screen"),
   "settings-screen": document.getElementById("settings-screen")
@@ -27,9 +27,9 @@ function updateAnalogClock() {
   const minuteHand = document.querySelector(".hand.minute");
   const hourHand = document.querySelector(".hand.hour");
 
-  secondHand.style.transform = `rotate(${second * 6}deg)`;
-  minuteHand.style.transform = `rotate(${minute * 6}deg)`;
-  hourHand.style.transform = `rotate(${hour * 30}deg)`;
+  if (secondHand) secondHand.style.transform = `rotate(${second * 6}deg)`;
+  if (minuteHand) minuteHand.style.transform = `rotate(${minute * 6}deg)`;
+  if (hourHand) hourHand.style.transform = `rotate(${hour * 30}deg)`;
 }
 
 function showScreen(screenName) {
@@ -91,6 +91,19 @@ input.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     sendButton.click();
   }
+});
+
+const appCards = document.querySelectorAll(".app-card");
+appCards.forEach((appCard) => {
+  appCard.addEventListener("click", () => {
+    const target = appCard.dataset.screen;
+    if (target) {
+      showScreen(target);
+      navButtons.forEach((btn) => btn.classList.remove("active"));
+      const match = [...navButtons].find((btn) => btn.dataset.screen === target);
+      if (match) match.classList.add("active");
+    }
+  });
 });
 
 updateClock();

@@ -19,7 +19,7 @@
         </header>
 
         <main class="main-panel">
-          <section class="screen watchface-screen active" id="watchface-screen">
+          <section class="screen active" id="watchface-screen">
             <div class="watchface-header">
               <span>DOM</span>
               <span>2</span>
@@ -65,7 +65,70 @@
             </div>
           </section>
 
-          <section class="screen messages-screen" id="messages-screen">
+          <section class="screen" id="apps-screen">
+            <div class="section-header">
+              <h3>Apps</h3>
+            </div>
+
+            <div class="apps-grid">
+              <div class="app-card" data-screen="messages-screen">
+                <div class="app-icon icon-messages">✉</div>
+                <span>Mensagens</span>
+              </div>
+              <div class="app-card" data-screen="activity-screen">
+                <div class="app-icon icon-fit">🏃</div>
+                <span>Treino</span>
+              </div>
+              <div class="app-card" data-screen="watchface-screen">
+                <div class="app-icon icon-music">♫</div>
+                <span>Música</span>
+              </div>
+              <div class="app-card" data-screen="activity-screen">
+                <div class="app-icon icon-health">❤</div>
+                <span>Saúde</span>
+              </div>
+              <div class="app-card" data-screen="notifications-screen">
+                <div class="app-icon icon-weather">☼</div>
+                <span>Clima</span>
+              </div>
+              <div class="app-card" data-screen="watchface-screen">
+                <div class="app-icon icon-calendar">📅</div>
+                <span>Agenda</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen" id="notifications-screen">
+            <div class="section-header">
+              <h3>Notificações</h3>
+            </div>
+
+            <ul class="notification-list">
+              <li>
+                <span class="notify-icon notify-blue">✓</span>
+                <div>
+                  <strong>Treino concluído</strong>
+                  <small>Há 10 min</small>
+                </div>
+              </li>
+              <li>
+                <span class="notify-icon notify-green">✦</span>
+                <div>
+                  <strong>Meta de passos</strong>
+                  <small>Você está em 72%</small>
+                </div>
+              </li>
+              <li>
+                <span class="notify-icon notify-orange">!</span>
+                <div>
+                  <strong>Alerta de saúde</strong>
+                  <small>Frequência cardíaca alta</small>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="screen" id="messages-screen">
             <div class="section-header">
               <h3>Mensagens</h3>
               <span class="badge">3</span>
@@ -101,70 +164,7 @@
             </ul>
           </section>
 
-          <section class="screen apps-screen" id="apps-screen">
-            <div class="section-header">
-              <h3>Apps</h3>
-            </div>
-
-            <div class="apps-grid">
-              <div class="app-card">
-                <div class="app-icon icon-messages">✉</div>
-                <span>Mensagens</span>
-              </div>
-              <div class="app-card">
-                <div class="app-icon icon-fit">🏃</div>
-                <span>Treino</span>
-              </div>
-              <div class="app-card">
-                <div class="app-icon icon-music">♫</div>
-                <span>Música</span>
-              </div>
-              <div class="app-card">
-                <div class="app-icon icon-health">❤</div>
-                <span>Saúde</span>
-              </div>
-              <div class="app-card">
-                <div class="app-icon icon-weather">☼</div>
-                <span>Clima</span>
-              </div>
-              <div class="app-card">
-                <div class="app-icon icon-calendar">📅</div>
-                <span>Agenda</span>
-              </div>
-            </div>
-          </section>
-
-          <section class="screen notifications-screen" id="notifications-screen">
-            <div class="section-header">
-              <h3>Notificações</h3>
-            </div>
-
-            <ul class="notification-list">
-              <li>
-                <span class="notify-icon notify-blue">✓</span>
-                <div>
-                  <strong>Treino concluído</strong>
-                  <small>Há 10 min</small>
-                </div>
-              </li>
-              <li>
-                <span class="notify-icon notify-green">✦</span>
-                <div>
-                  <strong>Meta de passos</strong>
-                  <small>Você está em 72%</small>
-                </div>
-              </li>
-              <li>
-                <span class="notify-icon notify-orange">!</span>
-                <div>
-                  <strong>Alerta de saúde</strong>
-                  <small>Frequência cardíaca alta</small>
-                </div>
-              </li>
-            </ul>
-          </section>
-
-          <section class="screen chat-screen" id="chat-screen">
+          <section class="screen" id="chat-screen">
             <div class="chat-header">
               <button class="back-btn" id="back-btn">←</button>
               <div class="contact-details">
@@ -186,7 +186,7 @@
             </div>
           </section>
 
-          <section class="screen activity-screen" id="activity-screen">
+          <section class="screen" id="activity-screen">
             <div class="section-header">
               <h3>Atividade</h3>
             </div>
@@ -219,7 +219,7 @@
             </div>
           </section>
 
-          <section class="screen settings-screen" id="settings-screen">
+          <section class="screen" id="settings-screen">
             <div class="section-header">
               <h3>Configurações</h3>
             </div>
