@@ -19,7 +19,7 @@
         </header>
 
         <main class="main-panel">
-          <section class="watchface screen active" id="watchface-screen">
+          <section class="screen watchface-screen active" id="watchface-screen">
             <div class="watchface-header">
               <span>DOM</span>
               <span>2</span>
@@ -52,9 +52,20 @@
                 <strong>72</strong>
               </div>
             </div>
+
+            <div class="widget-row">
+              <div class="widget">
+                <span>Notificações</span>
+                <strong>12</strong>
+              </div>
+              <div class="widget">
+                <span>Treino</span>
+                <strong>45 min</strong>
+              </div>
+            </div>
           </section>
 
-          <section class="messages screen" id="messages-screen">
+          <section class="screen messages-screen" id="messages-screen">
             <div class="section-header">
               <h3>Mensagens</h3>
               <span class="badge">3</span>
@@ -90,7 +101,70 @@
             </ul>
           </section>
 
-          <section class="chat screen" id="chat-screen">
+          <section class="screen apps-screen" id="apps-screen">
+            <div class="section-header">
+              <h3>Apps</h3>
+            </div>
+
+            <div class="apps-grid">
+              <div class="app-card">
+                <div class="app-icon icon-messages">✉</div>
+                <span>Mensagens</span>
+              </div>
+              <div class="app-card">
+                <div class="app-icon icon-fit">🏃</div>
+                <span>Treino</span>
+              </div>
+              <div class="app-card">
+                <div class="app-icon icon-music">♫</div>
+                <span>Música</span>
+              </div>
+              <div class="app-card">
+                <div class="app-icon icon-health">❤</div>
+                <span>Saúde</span>
+              </div>
+              <div class="app-card">
+                <div class="app-icon icon-weather">☼</div>
+                <span>Clima</span>
+              </div>
+              <div class="app-card">
+                <div class="app-icon icon-calendar">📅</div>
+                <span>Agenda</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="screen notifications-screen" id="notifications-screen">
+            <div class="section-header">
+              <h3>Notificações</h3>
+            </div>
+
+            <ul class="notification-list">
+              <li>
+                <span class="notify-icon notify-blue">✓</span>
+                <div>
+                  <strong>Treino concluído</strong>
+                  <small>Há 10 min</small>
+                </div>
+              </li>
+              <li>
+                <span class="notify-icon notify-green">✦</span>
+                <div>
+                  <strong>Meta de passos</strong>
+                  <small>Você está em 72%</small>
+                </div>
+              </li>
+              <li>
+                <span class="notify-icon notify-orange">!</span>
+                <div>
+                  <strong>Alerta de saúde</strong>
+                  <small>Frequência cardíaca alta</small>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="screen chat-screen" id="chat-screen">
             <div class="chat-header">
               <button class="back-btn" id="back-btn">←</button>
               <div class="contact-details">
@@ -112,7 +186,7 @@
             </div>
           </section>
 
-          <section class="activity screen" id="activity-screen">
+          <section class="screen activity-screen" id="activity-screen">
             <div class="section-header">
               <h3>Atividade</h3>
             </div>
@@ -145,7 +219,7 @@
             </div>
           </section>
 
-          <section class="settings screen" id="settings-screen">
+          <section class="screen settings-screen" id="settings-screen">
             <div class="section-header">
               <h3>Configurações</h3>
             </div>
@@ -173,8 +247,9 @@
 
         <nav class="bottom-nav">
           <button class="nav-btn active" data-screen="watchface-screen">Home</button>
+          <button class="nav-btn" data-screen="apps-screen">Apps</button>
           <button class="nav-btn" data-screen="messages-screen">Msg</button>
-          <button class="nav-btn" data-screen="activity-screen">Fit</button>
+          <button class="nav-btn" data-screen="notifications-screen">Alert</button>
           <button class="nav-btn" data-screen="settings-screen">Set</button>
         </nav>
       </div>

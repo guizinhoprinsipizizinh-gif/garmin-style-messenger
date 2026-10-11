@@ -3,6 +3,8 @@ const navButtons = document.querySelectorAll(".nav-btn");
 const screens = {
   "watchface-screen": document.getElementById("watchface-screen"),
   "messages-screen": document.getElementById("messages-screen"),
+  "apps-screen": document.getElementById("apps-screen"),
+  "notifications-screen": document.getElementById("notifications-screen"),
   "chat-screen": document.getElementById("chat-screen"),
   "activity-screen": document.getElementById("activity-screen"),
   "settings-screen": document.getElementById("settings-screen")
@@ -32,7 +34,7 @@ function updateAnalogClock() {
 
 function showScreen(screenName) {
   Object.keys(screens).forEach((key) => {
-    screens[key].classList.remove("active");
+    if (screens[key]) screens[key].classList.remove("active");
   });
 
   if (screens[screenName]) {

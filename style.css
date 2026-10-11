@@ -8,6 +8,8 @@
   --accent: #75d9ff;
   --accent-2: #85f0d1;
   --accent-3: #7be0ff;
+  --warning: #ffb870;
+  --danger: #ff8f8a;
   --shadow: rgba(0, 0, 0, 0.33);
 }
 
@@ -100,7 +102,7 @@ body {
   display: block;
 }
 
-.watchface {
+.watchface-screen {
   padding: 8px 8px 0;
 }
 
@@ -217,6 +219,31 @@ body {
   font-size: 1rem;
 }
 
+.widget-row {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.widget {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 12px 10px;
+}
+
+.widget span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  margin-bottom: 8px;
+}
+
+.widget strong {
+  font-size: 1rem;
+}
+
 .section-header {
   display: flex;
   align-items: center;
@@ -240,7 +267,9 @@ body {
   font-size: 0.7rem;
 }
 
-.message-list {
+.message-list,
+.notification-list,
+.settings-list {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -299,6 +328,82 @@ body {
   color: var(--muted);
   font-size: 0.68rem;
 }
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.app-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 12px 8px 10px;
+  text-align: center;
+}
+
+.app-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 8px;
+  font-size: 1.2rem;
+  background: rgba(255,255,255,0.08);
+}
+
+.icon-messages { background: linear-gradient(135deg, var(--accent), #9ee0ff); }
+.icon-fit { background: linear-gradient(135deg, var(--accent-2), #dbfff3); }
+.icon-music { background: linear-gradient(135deg, #fbd6a8, #ffd9e5); }
+.icon-health { background: linear-gradient(135deg, var(--danger), #ffc0b4); }
+.icon-weather { background: linear-gradient(135deg, #ffeaa5, #ffce70); }
+.icon-calendar { background: linear-gradient(135deg, #d9d0ff, #f0ebff); }
+
+.app-card span {
+  font-size: 0.72rem;
+  color: var(--text);
+}
+
+.notification-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.notification-list div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.notification-list strong {
+  font-size: 0.8rem;
+}
+
+.notification-list small {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.notify-icon {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.notify-blue { background: rgba(117,217,255,0.18); color: var(--accent); }
+.notify-green { background: rgba(133,240,209,0.18); color: var(--accent-2); }
+.notify-orange { background: rgba(255,184,112,0.18); color: var(--warning); }
 
 .chat-header {
   display: flex;
@@ -442,13 +547,6 @@ body {
   color: var(--muted);
 }
 
-.settings-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 .settings-list li {
   display: flex;
   justify-content: space-between;
@@ -499,8 +597,8 @@ body {
   background: rgba(255,255,255,0.04);
   color: var(--text);
   border-radius: 12px;
-  padding: 10px 6px;
-  font-size: 0.72rem;
+  padding: 10px 4px;
+  font-size: 0.66rem;
   cursor: pointer;
   transition: 0.2s ease;
 }
